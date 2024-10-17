@@ -36,6 +36,11 @@ class TaskController extends Controller
         $tasks->where('due_date',$request->status);
     }
 
+    //search by title
+    if($request->has('search')){
+        $tasks->where('title','like','%'.$request->search. '%');
+    }
+
 //page
     return response()->json($tasks->paginate(10));
 
