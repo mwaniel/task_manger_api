@@ -1,5 +1,4 @@
-# task_manger_api
-simple task manager
+
 # Task Management System API
 
 This is a simple RESTful API built with Lumen that allows users to manage tasks. The API handles basic CRUD (Create, Read, Update, Delete) operations for tasks.
