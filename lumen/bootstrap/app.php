@@ -26,6 +26,11 @@ $app = new Laravel\Lumen\Application(
 $app->withFacades();
 
 $app->withEloquent();
+$app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) {
+    return \Illuminate\Database\Eloquent\Factory::construct(
+        $app->make(\Faker\Generator::class), database_path('factories')
+    );
+    });
 
 /*
 |--------------------------------------------------------------------------
