@@ -23,4 +23,21 @@ class TaskController extends Controller
         $task = Task::create($request->all());
         return response()->json(['message'=>'Task created successfully'],201);
    }
+   // get all tasks
+   public function getAllTasks(Request $request)
+   {
+    $tasks = Task::query();
+    //filter by status
+    if($request->has('status')){
+        $tasks->where('status',$request->status);
+    }
+    //filter by due date
+    if($request->has('due_date')){
+        $tasks->where('due_date',$request->status);
+    }
+
+//page
+    return response()->json($tasks->paginate(10));
+
+   }
 }
